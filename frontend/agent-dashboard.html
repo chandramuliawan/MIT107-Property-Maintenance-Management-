@@ -2,14 +2,23 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Agent Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
+
+    <nav class="navbar">
+        <h2>Property Management Tracker</h2>
+    </nav>
 
     <div class="container">
 
@@ -27,19 +36,42 @@
                 <th>Issue</th>
                 <th>Tenant</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
 
-<tr>
-    <td>Broken Heater</td>
-    <td>Alex</td>
-    <td class="open">OPEN</td>
-</tr>
+            <tr>
+                <td>Broken Heater</td>
+                <td>Alex</td>
+                <td class="open">OPEN</td>
 
-<tr>
-    <td>Leaking Tap</td>
-    <td>Sam</td>
-    <td class="in-progress">IN_PROGRESS</td>
-</tr>
+                <td>
+                    <button
+                        type="button"
+                        onclick="location.href='issue-details.html'">
+
+                        Open
+
+                    </button>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>Leaking Tap</td>
+                <td>Sam</td>
+                <td class="in-progress">IN PROGRESS</td>
+
+                <td>
+                    <button
+                        type="button"
+                        onclick="location.href='issue-details.html'">
+
+                        Open
+
+                    </button>
+                </td>
+
+            </tr>
 
         </table>
 

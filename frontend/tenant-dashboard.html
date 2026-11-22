@@ -1,9 +1,114 @@
-Welcome, Tenant
-Your registered property: 15 Example Street, Melbourne VIC 3000
+<!DOCTYPE html>
+<html lang="en">
 
-+ New Issue
-My Maintenance Requests
-Issue	Status
-Broken Heater	IN_PROGRESS
-Leaking Kitchen Tap	OPEN
-Oven Not Working	RESOLVED
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Tenant Dashboard</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>Property Management Tracker</h2>
+    </nav>
+
+    <div class="container">
+
+        <h1>
+            Welcome, Tenant
+        </h1>
+
+        <p>
+            Your registered property:
+            15 Example Street, Melbourne VIC 3000
+        </p>
+
+        <button
+           type="button"
+           onclick="window.location.href='new-issue.html'">
+        
+            + New Issue
+
+        </button>
+        <h2>
+            My Maintenance Requests
+        </h2>
+
+        <table>
+
+            <tr>
+                <th>Issue</th>
+                <th>Category</th>
+                <th>Date Logged</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td>Leaking Kitchen Tap</td>
+                <td>Plumbing</td>
+                <td>12 Nov 2026</td>
+                <td class="open">OPEN</td>
+                <td>
+                    <button
+                      type="button"
+                      onclick="location.href='issue-details.html'">
+
+                  view
+
+                </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Broken Heater</td>
+                <td>Heating/Cooling</td>
+                <td>10 Nov 2026</td>
+                <td class="in-progress">
+                    IN PROGRESS
+                </td>
+                <td>
+                    <button
+                      type="button"
+                      onclick="location.href='issue-details.html'">
+
+                  view
+
+                </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Oven Not Working</td>
+                <td>Appliances</td>
+                <td>2 Nov 2026</td>
+                <td class="resolved">
+                    RESOLVED
+                </td>
+                <td>
+                    <button
+                      type="button"
+                      onclick="location.href='issue-details.html'">
+
+                  view
+
+                </button>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

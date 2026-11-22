@@ -2,23 +2,17 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>
-        Property Management Tracker
-    </title>
+    <title>Property Management Tracker</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="login-card">
 
         <h1>
             Property Management Tracker
@@ -32,20 +26,18 @@
 
             <label>Email Address</label>
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter your email address">
+            <input type="email" id="email" placeholder="Enter your email address">
 
             <label>Password</label>
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password">
+            <input type="password" id="password" placeholder="Enter your password">
 
-            <button type="submit">
+            <button
+               type="button"
+               onclick="window.location.href='tenant-dashboard.html'">
+
                 Log In
+
             </button>
 
         </form>
