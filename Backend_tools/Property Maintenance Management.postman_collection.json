@@ -1,0 +1,499 @@
+{
+  "info": {
+    "_postman_id": "f4703572-f13c-4be8-9a54-ac4da27da00c",
+    "name": "Property Maintenance Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "16797856"
+  },
+  "item": [
+    {
+      "name": "register_tenant",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{api_key}}",
+            "type": "text",
+            "id": 0
+          },
+          {
+            "key": "Content-Type",
+            "value": "",
+            "type": "text",
+            "id": 1
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"jeffersonpardo00au@gmail.com\",\r\n  \"password\": \"jeff12345!\",\r\n  \"data\": {\r\n    \"name\": \"Jefferson Pardo\",\r\n    \"contact\": \"0401234567\",\r\n    \"property_address\": \"456 fake street 3000 Melbourne, Australia\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/v1/signup",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "v1",
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tenant login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{api_key}}",
+            "type": "text",
+            "id": 0
+          },
+          {
+            "key": "Content-Type",
+            "value": "",
+            "type": "text",
+            "id": 1
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"jeffersonpardo00@gmail.com\",\r\n  \"password\": \"jeff12345!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/v1/token?grant_type=password",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "v1",
+            "token"
+          ],
+          "query": [
+            {
+              "key": "grant_type",
+              "value": "password"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Agent login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{api_key}}",
+            "type": "text",
+            "id": 0
+          },
+          {
+            "key": "Content-Type",
+            "value": "",
+            "type": "text",
+            "id": 1
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"jeff.pardo@mitse.com\",\r\n  \"password\": \"jeff12345*\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/v1/token?grant_type=password",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "v1",
+            "token"
+          ],
+          "query": [
+            {
+              "key": "grant_type",
+              "value": "password"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get tenant issues",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{api_key}}",
+            "type": "text",
+            "id": 0
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "type": "text",
+            "id": 1
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "id": 2
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/rest/v1/tenant_issue_dashboard?select=id,issue_title,status,priority",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "tenant_issue_dashboard"
+          ],
+          "query": [
+            {
+              "key": "select",
+              "value": "id,issue_title,status,priority"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create issue",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{api_key}}",
+            "type": "text",
+            "id": 0
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "type": "text",
+            "id": 1
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "id": 2
+          },
+          {
+            "key": "Prefer",
+            "value": "return=representation",
+            "type": "text",
+            "id": 3
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"issue_title\": \"Water leaking in kitchen 2\",\r\n  \"issue_details\": \"There is water leaking under the kitchen sink.\",\r\n  \"issue_category\": \"PLUMBING\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/rest/v1/issues",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "issues"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update issue",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{api_key}}",
+            "type": "text",
+            "id": 0
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "type": "text",
+            "id": 1
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "id": 2
+          },
+          {
+            "key": "Prefer",
+            "value": "return=representation",
+            "type": "text",
+            "id": 3
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"agent_id\": \"{{user_id}}\",\r\n  \"priority\": \"URGENT\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/rest/v1/issues?id=eq.{{issue_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "issues"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "eq.{{issue_id}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get issue by ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "name": "cache-control",
+            "sortOrder": 2,
+            "infoTitle": "We recommend using this header",
+            "info": "Postman added \"Cache-Control: no-cache\" as a precautionary measure to prevent the server from returning stale response when one makes repeated requests.\n\nYou can remove this header in the app settings or enter a new one with a different value.",
+            "allowedToToggle": false,
+            "disableEdit": true,
+            "previewSettingsLink": "Go to settings",
+            "key": "Cache-Control",
+            "value": "no-cache",
+            "system": true,
+            "type": "text"
+          },
+          {
+            "name": "postman-token",
+            "sortOrder": 3,
+            "infoTitle": "We recommend using this header",
+            "info": "The Postman-Token header appends a random UUID to every outgoing request. Postman adds this header for API developers to better debug requests sent and to ensure separate requests appear distinct to the receiving server.\n\nYou can remove this header in the app settings.",
+            "allowedToToggle": false,
+            "disableEdit": true,
+            "previewSettingsLink": "Go to settings",
+            "key": "Postman-Token",
+            "value": "<calculated when request is sent>",
+            "system": true,
+            "type": "text"
+          },
+          {
+            "name": "host",
+            "sortOrder": 6,
+            "infoTitle": "We recommend using this header",
+            "info": "The Host header is added to identify the domain name for which a request is being sent to the server. This header is implicitly sent by every HTTP client.\n\nYou can remove the header or enter a new one with a different value. It is most likely that without this header, your request will return an HTTP 400 error.",
+            "allowedToToggle": true,
+            "disableEdit": true,
+            "key": "Host",
+            "value": "<calculated when request is sent>",
+            "system": true,
+            "type": "text"
+          },
+          {
+            "name": "user-agent",
+            "sortOrder": 7,
+            "infoTitle": "We recommend using this header",
+            "info": "The User-Agent header is added to help the server identify Postman as the HTTP requesting application or client.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+            "allowedToToggle": true,
+            "disableEdit": true,
+            "key": "User-Agent",
+            "value": "PostmanRuntime/7.56.3",
+            "system": true,
+            "type": "text"
+          },
+          {
+            "name": "accept",
+            "sortOrder": 8,
+            "infoTitle": "We recommend using this header",
+            "info": "The \"Accept: */*\" header is added to tell the server that Postman can understand and process all forms of response content types.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+            "allowedToToggle": true,
+            "disableEdit": true,
+            "key": "Accept",
+            "value": "*/*",
+            "system": true,
+            "type": "text"
+          },
+          {
+            "name": "accept-encoding",
+            "sortOrder": 9,
+            "infoTitle": "We recommend using this header",
+            "info": "The Accept-Encoding header is added to indicate to the server that Postman HTTP client supports a defined list of content-encoding or compression algorithms as response.\n\nYou can remove the header or enter a new one with a different value. Doing that may not accurately render the response within the app.",
+            "allowedToToggle": true,
+            "disableEdit": true,
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br",
+            "system": true,
+            "type": "text"
+          },
+          {
+            "name": "connection",
+            "sortOrder": 10,
+            "infoTitle": "We recommend using this header",
+            "info": "Postman added the Connection header to indicate the server to keep the underlying network connection open once the current response is received. This allows Postman to reuse the same connection for faster response times in subsequent requests to the same server.\n\nYou can remove this header or enter a new one with a different value, such as `Connection: Close` to control this behaviour.",
+            "allowedToToggle": true,
+            "disableEdit": true,
+            "key": "Connection",
+            "value": "keep-alive",
+            "system": true,
+            "type": "text"
+          },
+          {
+            "key": "apikey",
+            "value": "{{api_key}}",
+            "type": "text",
+            "id": 0
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "type": "text",
+            "id": 1
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "id": 2
+          },
+          {
+            "key": "Prefer",
+            "value": "return=representation",
+            "type": "text",
+            "id": 3
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/rest/v1/issues?id=eq.{{issue_id}}&select=id,issue_title,status,priority",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "issues"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "eq.{{issue_id}}"
+            },
+            {
+              "key": "select",
+              "value": "id,issue_title,status,priority"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "exec": [
+          "\r",
+          "const response = pm.response.json();\r",
+          "\r",
+          "if (response.access_token) {\r",
+          "    pm.environment.set(\r",
+          "        \"access_token\",\r",
+          "        response.access_token\r",
+          "    );\r",
+          "\r",
+          "    pm.environment.set(\r",
+          "        \"user_id\",\r",
+          "        response.user.id\r",
+          "    );\r",
+          "\r",
+          "    console.log(\"Access token saved!\");\r",
+          "}\r",
+          "\r",
+          "if (response.length > 0) {\r",
+          "    pm.environment.set(\r",
+          "        \"issue_id\",\r",
+          "        response[0].id\r",
+          "    );\r",
+          "}"
+        ],
+        "type": "text/javascript",
+        "packages": {}
+      }
+    }
+  ]
+}
