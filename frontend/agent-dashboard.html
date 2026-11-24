@@ -10,76 +10,39 @@
 
     <title>Agent Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/frontend/style.css">
 
 </head>
 
-<body>
-
+<body data-page="agent-dashboard">
     <nav class="navbar">
-        <h2>Property Management Tracker</h2>
+        <a class="brand" href="/agent/dashboard">Property Management Tracker</a>
+        <div class="nav-user"><span id="userName"></span><button class="button button-quiet" type="button" data-logout>Log out</button></div>
     </nav>
-
-    <div class="container">
-
-        <h1>Welcome, Agent</h1>
-
-        <p>Manage Assigned Maintenance Requests</p>
-
-        <input
-            type="text"
-            id="searchBox"
-            placeholder="Search Requests">
-
-        <table>
-
-            <tr>
-                <th>Issue</th>
-                <th>Tenant</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-
-            <tr id="heaterRow">
-                <td>Broken Heater</td>
-                <td>Alex</td>
-                <td class="open">OPEN</td>
-
-                <td>
-                    <button
-                        type="button"
-                        onclick="location.href='agent-issue-details.html'">
-
-                        Open
-
-                    </button>
-                </td>
-
-            </tr>
-
-            <tr id="tapRow">
-                <td>Leaking Tap</td>
-                <td>Sam</td>
-                <td class="in-progress">IN PROGRESS</td>
-
-                <td>
-                    <button
-                        type="button"
-                        onclick="location.href='agent-issue-details.html'">
-
-                        Open
-
-                    </button>
-                </td>
-
-            </tr>
-
-        </table>
-
-    </div>
-
-<script src="app.js"></script>
-
+    <main class="container">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">AGENT WORKSPACE</p>
+                <h1>Welcome, <span id="welcomeName">Agent</span></h1>
+                <p class="subheading">Manage Assigned Maintenance Requests</p>
+            </div>
+        </section>
+        <p id="pageMessage" class="message" aria-live="polite"></p>
+        <section class="panel">
+            <div class="panel-heading">
+                <div><p class="eyebrow">PROPERTY REQUESTS</p><h2>All requests</h2></div>
+                <input class="search-input" type="search" id="searchBox" placeholder="Search requests" aria-label="Search requests">
+            </div>
+            <p id="emptyState" class="message" aria-live="polite"></p>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Issue</th><th>Tenant</th><th>Property</th><th>Status</th><th>Priority</th><th></th></tr></thead>
+                    <tbody id="issueRows"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="/frontend/app.js"></script>
 </body>
 
 </html>

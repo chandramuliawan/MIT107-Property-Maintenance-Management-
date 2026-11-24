@@ -10,105 +10,40 @@
 
     <title>Tenant Dashboard</title>
 
-    <link rel="stylesheet"
-          href="style.css">
+    <link rel="stylesheet" href="/frontend/style.css">
 
 </head>
 
-<body>
-
+<body data-page="tenant-dashboard">
     <nav class="navbar">
-        <h2>Property Management Tracker</h2>
+        <a class="brand" href="/tenant/dashboard">Property Management Tracker</a>
+        <div class="nav-user"><span id="userName"></span><button class="button button-quiet" type="button" data-logout>Log out</button></div>
     </nav>
-
-    <div class="container">
-
-        <h1>
-            Welcome, Tenant
-        </h1>
-
-        <p>
-            Your registered property:
-            15 Example Street, Melbourne VIC 3000
-        </p>
-
-        <button
-           type="button"
-           onclick="window.location.href='new-issue.html'">
-        
-            + New Issue
-
-        </button>
-        <h2>
-            My Maintenance Requests
-        </h2>
-
-        <table>
-
-            <tr>
-                <th>Issue</th>
-                <th>Category</th>
-                <th>Date Logged</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-
-            <tr>
-                <td>Leaking Kitchen Tap</td>
-                <td>Plumbing</td>
-                <td>12 Nov 2026</td>
-                <td class="open">OPEN</td>
-                <td>
-                    <button
-                      type="button"
-                      onclick="location.href='tenant-issue-details.html'">
-
-                  view
-
-                </button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Broken Heater</td>
-                <td>Heating/Cooling</td>
-                <td>10 Nov 2026</td>
-                <td class="in-progress">
-                    IN PROGRESS
-                </td>
-                <td>
-                    <button
-                      type="button"
-                      onclick="location.href='tenant-issue-details.html'">
-
-                  view
-
-                </button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Oven Not Working</td>
-                <td>Appliances</td>
-                <td>2 Nov 2026</td>
-                <td class="resolved">
-                    RESOLVED
-                </td>
-                <td>
-                    <button
-                      type="button"
-                      onclick="location.href='tenant-issue-details.html'">
-
-                  view
-
-                </button>
-                </td>
-            </tr>
-
-        </table>
-
-    </div>
-
+    <main class="container">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">TENANT PORTAL</p>
+                <h1>Welcome, <span id="welcomeName">Tenant</span></h1>
+                <p class="subheading">Your registered property: <strong id="propertyAddress">your property</strong></p>
+            </div>
+            <a class="button button-primary" href="/tenant/issues/new">+ New Issue</a>
+        </section>
+        <p id="pageMessage" class="message" aria-live="polite"></p>
+        <section class="panel">
+            <div class="panel-heading">
+                <div><p class="eyebrow">YOUR REQUESTS</p><h2>Maintenance history</h2></div>
+                <span class="muted">Updates from your property agent</span>
+            </div>
+            <p id="emptyState" class="message" aria-live="polite"></p>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Issue</th><th>Category</th><th>Reported</th><th>Status</th><th>Priority</th><th></th></tr></thead>
+                    <tbody id="issueRows"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="/frontend/app.js"></script>
 </body>
 
 </html>

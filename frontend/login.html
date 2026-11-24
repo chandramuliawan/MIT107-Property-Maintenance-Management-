@@ -7,46 +7,45 @@
 
     <title>Property Management Tracker</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/frontend/style.css">
 </head>
 
-<body>
+<body data-page="login">
 
-    <div class="login-card">
+    <main class="login-shell">
+        <section class="login-card">
+            <a class="brand" href="/" aria-label="Property Maintenance home">Property Management Tracker</a>
+            <p class="eyebrow">MAINTENANCE PORTAL</p>
+            <h1>Property Management Tracker</h1>
+            <p class="subheading">Sign in to continue</p>
 
-        <h1>
-            Property Management Tracker
-        </h1>
+            <form id="authForm">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
 
-        <p>
-            Sign in to continue
-        </p>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Enter your password" required>
 
-        <form>
+                <div id="signupFields" hidden>
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name">
 
-            <label>Email Address</label>
+                    <label for="contact">Phone number</label>
+                    <input type="tel" id="contact" name="contact" autocomplete="tel" placeholder="Your contact number">
 
-            <input type="email" id="email" placeholder="Enter your email address">
+                    <label for="propertyAddress">Property address</label>
+                    <input type="text" id="propertyAddress" name="propertyAddress" autocomplete="street-address" placeholder="Your rental property address">
+                </div>
 
-            <label>Password</label>
+                <p id="loginMessage" class="message" aria-live="polite"></p>
+                <button class="button button-primary button-full" type="submit" id="loginBtn">Log in</button>
+            </form>
+            <button class="text-button" type="button" id="toggleSignup">New tenant? Create an account</button>
+            <p class="login-note">Agents should sign in with their property management account.</p>
+        </section>
+    </main>
 
-            <input type="password" id="password" placeholder="Enter your password">
-             
-            <p id="loginMessage"></p>
-
-            <button
-               type="button"
-               id="loginBtn">
-
-                Log In
-
-            </button>
-
-        </form>
-
-    </div>
-
-<script src="app.js"></script>
+    <script type="module" src="/frontend/app.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,96 +10,47 @@
 
     <title>Create Maintenance Request</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/frontend/style.css">
 
 </head>
 
-<body>
-
+<body data-page="new-issue">
     <nav class="navbar">
-        <h2>Property Management Tracker</h2>
+        <a class="brand" href="/tenant/dashboard">Property Management Tracker</a>
+        <div class="nav-user"><span id="userName"></span><button class="button button-quiet" type="button" data-logout>Log out</button></div>
     </nav>
+    <main class="container form-container">
+        <a class="back-link" href="/tenant/dashboard">← Back to Dashboard</a>
+        <section class="page-heading compact">
+            <div><p class="eyebrow">NEW REQUEST</p><h1>Create Maintenance Request</h1><p class="subheading">Submit a new maintenance issue for review.</p></div>
+        </section>
+        <p id="pageMessage" class="message" aria-live="polite"></p>
+        <form id="issueForm" class="panel form-panel">
+            <label for="issueTitle">Issue title</label>
+            <input type="text" id="issueTitle" name="issueTitle" maxlength="120" placeholder="e.g. Leak under kitchen sink" required>
 
-    <div class="container">
-
-        <button
-           type="button"
-           onclick="window.location.href='tenant-dashboard.html'">
-
-            ← Back to Dashboard
-            
-        </button>
-
-        <h1>Create Maintenance Request</h1>
-
-        <p>
-            Submit a new maintenance issue for review.
-        </p>
-
-        <form>
-
-            <label>Issue Title</label>
-
-            <input
-                type="text"
-                id="issueTitle"
-                placeholder="Enter issue title">
-
-            <label>Category</label>
-
-            <select id="category">
-
-                <option value="PLUMBING">
-                    Plumbing
-                </option>
-
-                <option value="ELECTRICAL">
-                     Electrical
-                </option>
-
-                <option value="HEATING_COOLING">
-                      Heating / Cooling
-                </option>
-
-                <option value="APPLIANCES">
-                     Appliances
-                </option>
-                <option value="MISCELLANEOUS">
-                     Miscellaneous
-                </option>
-
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+                <option value="PLUMBING">Plumbing</option>
+                <option value="ELECTRICAL">Electrical</option>
+                <option value="HEATING_COOLING">Heating / Cooling</option>
+                <option value="APPLIANCES">Appliances</option>
+                <option value="MISCELLANEOUS">Miscellaneous</option>
             </select>
 
-            <label>Property Address</label>
+            <label for="propertyAddress">Property address</label>
+            <input type="text" id="propertyAddress" readonly>
 
-            <input
-                type="text"
-                value="15 Example Street, Melbourne VIC 3000"
-                readonly>
-
-            <label>Issue Details</label>
-
-            <textarea
-                id="issueDetails"
-                rows="6"
-                placeholder="Describe the issue">
-            </textarea>
-
-            
-            <p id="issueMessage"></p>
-            
-            <button
-                type="button"
-                id="submitIssueBtn">
-
-                Submit Request
-
-            </button>
-
+            <label for="issueDetails">Describe the issue</label>
+            <textarea id="issueDetails" name="issueDetails" rows="6" maxlength="4000" placeholder="Include when it started and any details that may help." required></textarea>
+            <p id="issueMessage" class="message" aria-live="polite"></p>
+            <div class="form-actions">
+                <a class="button button-secondary" href="/tenant/dashboard">Cancel</a>
+                <button class="button button-primary" type="submit" id="submitIssueBtn">Submit request</button>
+            </div>
         </form>
-
-    </div>
-
+    </main>
+    <script type="module" src="/frontend/app.js"></script>
 </body>
 
 </html>
