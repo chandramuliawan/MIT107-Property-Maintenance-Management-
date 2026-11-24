@@ -48,11 +48,24 @@
 
             <select id="category">
 
-                <option>Plumbing</option>
-                <option>Electrical</option>
-                <option>Heating / Cooling</option>
-                <option>Appliances</option>
-                <option>Other</option>
+                <option value="PLUMBING">
+                    Plumbing
+                </option>
+
+                <option value="ELECTRICAL">
+                     Electrical
+                </option>
+
+                <option value="HEATING_COOLING">
+                      Heating / Cooling
+                </option>
+
+                <option value="APPLIANCES">
+                     Appliances
+                </option>
+                <option value="MISCELLANEOUS">
+                     Miscellaneous
+                </option>
 
             </select>
 
@@ -71,9 +84,12 @@
                 placeholder="Describe the issue">
             </textarea>
 
+            
+            <p id="issueMessage"></p>
+            
             <button
                 type="button"
-                onclick="window.location.href='tenant-dashboard.html'">
+                id="submitIssueBtn">
 
                 Submit Request
 
