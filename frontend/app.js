@@ -64,14 +64,16 @@ function addButtonCell(row, label, issueId) {
     const cell = document.createElement("td");
     const button = document.createElement("a");
     button.className = "button button-small";
-    button.href = `/issues/${encodeURIComponent(issueId)}`;
+    button.href = `./issue-details.html?id=${encodeURIComponent(issueId)}`;
     button.textContent = label;
     cell.append(button);
     row.append(cell);
 }
 
 function dashboardPath(role) {
-    return role === "AGENT" ? "/agent/dashboard" : "/tenant/dashboard";
+    return role === "AGENT"
+        ? "./agent-dashboard.html"
+        : "./tenant-dashboard.html";
 }
 
 async function getProfile(userId) {
@@ -179,7 +181,7 @@ async function requireUser(expectedRole) {
         return null;
     }
     if (!session) {
-        window.location.replace("/login");
+        window.location.replace("./login.html");
         return null;
     }
 
@@ -213,7 +215,7 @@ async function requireUser(expectedRole) {
                 showMessage(document.getElementById("pageMessage"), `Unable to log out: ${logoutError.message}`);
                 return;
             }
-            window.location.replace("/login");
+            window.location.replace("./login.html");
         });
     });
     return { user: session.user, profile };
@@ -316,7 +318,7 @@ async function initializeNewIssue(userProfile) {
             submitButton.disabled = false;
             return;
         }
-        window.location.replace(`/issues/${encodeURIComponent(data.id)}`);
+        window.location.replace(`./issue-details.html?id=${encodeURIComponent(data.id)}`);
     });
 }
 
