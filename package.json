@@ -1,0 +1,7 @@
+{
+  "name": "property-maintenance-frontend",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Issue Details</title>
+
+    <link rel="stylesheet" href="/frontend/style.css">
+
+</head>
+
+<body data-page="tenant-issue">
+    <nav class="navbar">
+        <a class="brand" href="/tenant/dashboard">Property Management Tracker</a>
+        <div class="nav-user"><span id="userName"></span><button class="button button-quiet" type="button" data-logout>Log out</button></div>
+    </nav>
+    <main class="container detail-container">
+        <a class="back-link" id="backLink" href="/tenant/dashboard">← Back to Dashboard</a>
+        <p id="pageMessage" class="message" aria-live="polite"></p>
+        <section class="panel detail-panel">
+            <div class="detail-heading">
+                <div><p class="eyebrow">MAINTENANCE REQUEST</p><h1 id="issueTitle">Loading request…</h1><p class="subheading"><span id="issueCategory"></span> · Reported <span id="dateLogged"></span></p></div>
+                <span id="issueStatus" class="status"></span>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <h2>Issue description</h2>
+                    <p id="issueDetails" class="detail-copy"></p>
+                    <div class="detail-meta"><div><span class="meta-label">Property</span><span id="propertyAddress"></span></div></div>
+                </div>
+                <aside class="detail-side">
+                    <h2>Request status</h2>
+                    <div class="side-row"><span>Priority</span><strong id="priority"></strong></div>
+                    <div class="side-row"><span>Last updated</span><strong id="dateUpdated"></strong></div>
+                    <div class="side-row"><span>Resolved</span><strong id="dateResolved"></strong></div>
+                </aside>
+            </div>
+            <section id="agentActions" class="agent-actions" hidden>
+                <div><p class="eyebrow">AGENT ACTION</p><h2>Update this request</h2></div>
+                <label id="priorityLabel" for="prioritySelect">Set priority</label>
+                <select id="prioritySelect"><option value="">Choose priority</option><option value="LOW">Low</option><option value="MED">Medium</option><option value="URGENT">Urgent</option></select>
+                <p id="actionMessage" class="message" aria-live="polite"></p>
+                <button class="button button-primary" type="button" id="startMaintenance">Assign priority &amp; start maintenance</button>
+                <button class="button button-primary" type="button" id="resolveIssue">Mark as resolved</button>
+            </section>
+        </section>
+    </main>
+    <script type="module" src="/frontend/app.js"></script>
+</body>
+
+</html>

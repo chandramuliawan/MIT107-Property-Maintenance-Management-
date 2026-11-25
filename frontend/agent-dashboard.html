@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Agent Dashboard</title>
+
+    <link rel="stylesheet" href="/frontend/style.css">
+
+</head>
+
+<body data-page="agent-dashboard">
+    <nav class="navbar">
+        <a class="brand" href="/agent/dashboard">Property Management Tracker</a>
+        <div class="nav-user"><span id="userName"></span><button class="button button-quiet" type="button" data-logout>Log out</button></div>
+    </nav>
+    <main class="container">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">AGENT WORKSPACE</p>
+                <h1>Welcome, <span id="welcomeName">Agent</span></h1>
+                <p class="subheading">Manage Assigned Maintenance Requests</p>
+            </div>
+        </section>
+        <p id="pageMessage" class="message" aria-live="polite"></p>
+        <section class="panel">
+            <div class="panel-heading">
+                <div><p class="eyebrow">PROPERTY REQUESTS</p><h2>All requests</h2></div>
+                <input class="search-input" type="search" id="searchBox" placeholder="Search requests" aria-label="Search requests">
+            </div>
+            <p id="emptyState" class="message" aria-live="polite"></p>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Issue</th><th>Tenant</th><th>Property</th><th>Status</th><th>Priority</th><th></th></tr></thead>
+                    <tbody id="issueRows"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="/frontend/app.js"></script>
+</body>
+
+</html>

@@ -8,6 +8,19 @@ The goal is to keep maintenance requests organised, make their progress easy to 
 
 ---
 
+## 💻 Run the Frontend
+
+The static frontend is in `frontend/` and uses Supabase Auth and the Supabase JavaScript client to call the endpoints represented in `Backend_tools/Property Maintenance Management.postman_collection.json`.
+
+1. In `frontend/supabase-config.js`, set `SUPABASE_URL` to your Supabase project URL (the collection's `{{base_url}}`) and `SUPABASE_ANON_KEY` to the project's publishable/anon key (the collection's `{{api_key}}`). These values are not included in the collection. Never use a `service_role` or secret key in browser code.
+2. Apply `Backend_tools/property_maintenance_supabase_setup.sql` to the Supabase project and ensure the `public` schema is exposed through the Data API.
+3. Run `node server.js` from the repository root, then visit `http://localhost:3000`. The included Node.js server uses only built-in modules; no dependency installation is needed. You can also use `npm start` where npm scripts are enabled.
+4. Create tenant accounts from the sign-in page. Agent accounts must be created and promoted to the `AGENT` role by an administrator as described in the SQL setup script.
+
+The application routes are `/login`, `/tenant/dashboard`, `/tenant/issues/new`, `/agent/dashboard` and `/issues/:id`. The frontend uses the project API's tenant and agent dashboard views and relies on Supabase row-level security for access control. Supabase email-confirmation settings may require a new tenant to confirm their address before signing in.
+
+---
+
 ## ✨ Features
 
 ### For tenants
