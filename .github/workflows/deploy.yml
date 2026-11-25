@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   deploy:
     environment:
@@ -25,10 +29,13 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Check frontend files
+        run: ls -la frontend/
+
       - name: Upload frontend
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend
+          path: frontend/
 
       - name: Deploy
         id: deployment
