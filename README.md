@@ -1,6 +1,6 @@
-# 🏠 [App Name] — Property Management Tracker
+# 🏠 MendMate — Property Management Tracker
 
-> **Project name:** [App Name] (working title: Property Management Tracker). Final name to be confirmed before prototype launch.
+> **Project name:** MendMate. Your Property Maintenance Hub.
 
 A simple maintenance management platform that helps tenants report property issues and gives property agents a clear way to review, prioritise and resolve them.
 
