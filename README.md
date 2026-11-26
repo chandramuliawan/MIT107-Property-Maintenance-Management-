@@ -35,7 +35,7 @@ The project can also be downloaded and run locally for development, testing or f
 Clone the project using Git:
 
 ```bash
-git clone [[Repository URL]](https://github.com/chandramuliawan/MIT107-Property-Maintenance-Management-.git)
+git clone https://github.com/chandramuliawan/MIT107-Property-Maintenance-Management-.git
 ```
 
 Alternatively, download the repository directly from GitHub.
