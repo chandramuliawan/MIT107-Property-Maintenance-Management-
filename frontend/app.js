@@ -294,7 +294,7 @@ async function initializeAgentDashboard() {
 }
 
 async function initializeNewIssue(userProfile) {
-    setText("propertyAddress", userProfile.profile.property_address);
+    document.getElementById("propertyAddress").value = userProfile.profile.property_address || "";
     const form = document.getElementById("issueForm");
     const submitButton = document.getElementById("submitIssueBtn");
     form.addEventListener("submit", async (event) => {
