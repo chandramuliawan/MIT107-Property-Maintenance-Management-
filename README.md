@@ -1,6 +1,6 @@
 # 🏠 MendMate — Property Management Tracker
 
-> **Project name:** MendMate. Your Property Maintenance Hub.
+> **MendMate** Your Property Maintenance Hub.
 
 A simple maintenance management platform that helps tenants report property issues and gives property agents a clear way to review, prioritise and resolve them.
 
@@ -9,7 +9,7 @@ The goal is to keep maintenance requests organised, make their progress easy to 
 ---
 ## 🌐 Access the Live Prototype
 
-You can access the FixFlow prototype directly through the deployed GitHub Pages website without downloading or installing the project.
+You can access the MendMate prototype directly through the deployed GitHub Pages website without downloading or installing the project.
 
 **Live Prototype:** https://chandramuliawan.github.io/MIT107-Property-Maintenance-Management-/login.html
 
