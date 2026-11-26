@@ -7,17 +7,133 @@ A simple maintenance management platform that helps tenants report property issu
 The goal is to keep maintenance requests organised, make their progress easy to follow, and preserve a clear record of completed work.
 
 ---
+## 🌐 Access the Live Prototype
 
-## 💻 Run the Frontend
+You can access the FixFlow prototype directly through the deployed GitHub Pages website without downloading or installing the project.
 
-The static frontend is in `frontend/` and uses Supabase Auth and the Supabase JavaScript client to call the endpoints represented in `Backend_tools/Property Maintenance Management.postman_collection.json`.
+**Live Prototype:** https://chandramuliawan.github.io/MIT107-Property-Maintenance-Management-/login.html
 
-1. In `frontend/supabase-config.js`, set `SUPABASE_URL` to your Supabase project URL (the collection's `{{base_url}}`) and `SUPABASE_ANON_KEY` to the project's publishable/anon key (the collection's `{{api_key}}`). These values are not included in the collection. Never use a `service_role` or secret key in browser code.
-2. Apply `Backend_tools/property_maintenance_supabase_setup.sql` to the Supabase project and ensure the `public` schema is exposed through the Data API.
-3. Run `node server.js` from the repository root, then visit `http://localhost:3000`. The included Node.js server uses only built-in modules; no dependency installation is needed. You can also use `npm start` where npm scripts are enabled.
-4. Create tenant accounts from the sign-in page. Agent accounts must be created and promoted to the `AGENT` role by an administrator as described in the SQL setup script.
+The frontend is hosted using **GitHub Pages**, while **Supabase** provides authentication, database services and access control.
 
-The application routes are `/login`, `/tenant/dashboard`, `/tenant/issues/new`, `/agent/dashboard` and `/issues/:id`. The frontend uses the project API's tenant and agent dashboard views and relies on Supabase row-level security for access control. Supabase email-confirmation settings may require a new tenant to confirm their address before signing in.
+> **Note:** The online prototype is a demonstration of the current application. Some functionality may depend on the availability and configuration of the connected Supabase project.
+
+---
+
+## 💻 Run the Frontend Locally
+
+The project can also be downloaded and run locally for development, testing or further exploration.
+
+### Requirements
+
+- Node.js installed on your machine.
+- A Supabase project configured with the required database structure and security policies.
+
+### Setup Instructions
+
+**1. Clone or download the repository**
+
+Clone the project using Git:
+
+```bash
+git clone [[Repository URL]](https://github.com/chandramuliawan/MIT107-Property-Maintenance-Management-.git)
+```
+
+Alternatively, download the repository directly from GitHub.
+
+**2. Configure Supabase**
+
+Open `frontend/supabase-config.js` and configure the following values using your own Supabase project credentials:
+
+- `SUPABASE_URL` – Your Supabase project URL.
+- `SUPABASE_ANON_KEY` – Your project's publishable/anon key.
+
+Never expose a Supabase `service_role` key or other secret keys in frontend code.
+
+**3. Set up the database**
+
+Apply the SQL setup script located at:
+
+`Backend_tools/property_maintenance_supabase_setup.sql`
+
+Ensure that the `public` schema is exposed through the Supabase Data API and that the required Row Level Security (RLS) policies are enabled.
+
+**4. Start the local server**
+
+From the repository root, run:
+
+```bash
+node server.js
+```
+
+Alternatively, use:
+
+```bash
+npm start
+```
+
+The included Node.js server uses built-in modules, so no additional dependency installation is required.
+
+**5. Open the application**
+
+Once the server is running, visit:
+
+`http://localhost:3000`
+
+### User Accounts & Access
+
+- **Tenant accounts:** Can be created through the application's sign-in page.
+- **Agent accounts:** Must be created and assigned the `AGENT` role by an administrator, following the instructions in the SQL setup script.
+
+Supabase email-confirmation settings may require newly registered tenants to verify their email address before signing in. This feature is currently disabled for the prototype launch timeline but will be enforced when the application goes live in the future.
+
+---
+
+## 🔧 Application Architecture & Security
+
+The frontend is located in `frontend/` and uses **Supabase Auth** for user authentication and the **Supabase JavaScript client** to communicate with the backend services.
+
+Database access is governed by **Supabase Row Level Security (RLS)** policies, which restrict access to maintenance records according to user permissions and roles.
+
+The project uses the following services:
+
+| Component | Technology / Service | Purpose |
+|---|---|---|
+| Frontend hosting | GitHub Pages | Hosts the deployed web application. |
+| Frontend development | HTML, CSS and JavaScript | Provides the user interface and application functionality. |
+| Backend services | Supabase | Provides authentication and database services. |
+| Authentication | Supabase Auth | Handles user sign-in and account authentication. |
+| Database | Supabase PostgreSQL | Stores user accounts and maintenance records. |
+| Database security | Supabase Row Level Security (RLS) | Enforces data-access restrictions according to configured policies. |
+| Local development | Node.js | Runs the frontend locally through the included development server. |
+
+The Supabase publishable/anon key is used by the frontend to initialise the Supabase client. This key is not a substitute for database security; access restrictions must be enforced through correctly configured authentication and RLS policies. Secret keys, including the `service_role` key, must never be exposed in browser-side code.
+
+### API Documentation & Testing
+
+The Postman collection is included in:
+
+`Backend_tools/Property Maintenance Management.postman_collection.json`
+
+It documents the available backend API requests and can be used to inspect and test the application's backend functionality.
+
+The collection uses the following environment variables:
+
+- `{{base_url}}` – Supabase project URL.
+- `{{api_key}}` – Supabase publishable/anon key.
+
+These values must be configured for the relevant Supabase project before running the requests.
+
+### Application Routes
+
+| Route | Purpose |
+|---|---|
+| `/login` | User sign-in |
+| `/tenant/dashboard` | Tenant maintenance dashboard |
+| `/tenant/issues/new` | Submit a new maintenance request |
+| `/agent/dashboard` | Agent maintenance dashboard |
+| `/issues/:id` | View or manage an individual maintenance issue |
+
+The application provides separate tenant and agent experiences through role-based access control. Supabase authentication and database security policies determine which maintenance records each user can access.
 
 ---
 
